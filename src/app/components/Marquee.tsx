@@ -1,35 +1,45 @@
-
-import MarqueeText from "react-marquee-text"
-import "react-marquee-text/dist/styles.css"
+import MarqueeText from "react-marquee-text";
+import "react-marquee-text/dist/styles.css";
 import { Itype } from "../types/type";
 import Link from "next/link";
 
-
 const Marque = async () => {
-
-    const res = await fetch('https://openapi.programming-hero.com/api/bazardor/products');
+    const res = await fetch(
+        "https://openapi.programming-hero.com/api/bazardor/products"
+    );
     const data: Itype[] = await res.json();
 
     return (
-        <div className="py-5 border border-amber-100 shadow-sm ">
+        <div className="overflow-hidden border border-amber-100 py-3 shadow-sm sm:py-4 md:py-5">
             <MarqueeText direction="right" duration={14}>
-                {
-                    data.map(d =>
-                        <Link key={d.id} href={`/productsDetails/${d.id}`}>
-                            <div className="hover:underline">
-                                <div className="flex gap-2 justify-center items-center">
-                                    <div>{d.nameBn}</div>
-                                    <div>{d.today} টাকা/কেজি</div>
-                                    <div>{d.change.dir === "up"
-                                        ? <div className="text-red-500 mx-2">▲ {d.change.pct}%</div>
-                                        : <div className="text-green-500 mx-2">▼ {d.change.pct}%</div>}
-                                    </div>
-                                    <span className="h-8 border-l border-gray-300 mx-6"></span>
+                {data.map((d) => (
+                    <Link key={d.id} href={`/productsDetails/${d.id}`}>
+                        <div className="whitespace-nowrap hover:underline">
+                            <div className="flex items-center justify-center gap-1.5 text-xs sm:gap-2 sm:text-sm md:text-base">
+                                <div>{d.nameBn}</div>
+
+                                <div>
+                                    {d.today} টাকা/কেজি
                                 </div>
+
+                                <div>
+                                    {d.change.dir === "up" ? (
+                                        <div className="mx-1 text-red-500 sm:mx-2">
+                                            ▲ {d.change.pct}%
+                                        </div>
+                                    ) : (
+                                        <div className="mx-1 text-green-500 sm:mx-2">
+                                            ▼ {d.change.pct}%
+                                        </div>
+                                    )}
+                                </div>
+
+                                <span className="mx-2 h-6 border-l border-gray-300 sm:mx-4 sm:h-7 md:mx-6 md:h-8"></span>
                             </div>
-                        </Link>
-                    )
-                };
+                        </div>
+                    </Link>
+                ))}
+                ;
             </MarqueeText>
         </div>
     );

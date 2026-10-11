@@ -8,7 +8,6 @@ import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
 
-
 const SignUpPage = () => {
 
     const [password, setPassword] = useState("");
@@ -58,48 +57,48 @@ const SignUpPage = () => {
         });
     };
 
-
-
     return (
-        <section>
-            <div>
-                <div className='text-center my-9'>
-                    <h2 className='text-3xl font-bold'>অ্যাকাউন্ট তৈরি করুন</h2>
-                    <p className='text-[15px] text-[#747373]'>বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
+        <section className="px-3 sm:px-5 md:px-6">
+            <div className="mx-auto max-w-5xl">
+
+                <div className='text-center mt-6 sm:mt-8 md:mt-9 mb-6 sm:mb-9'>
+                    <h2 className='text-2xl sm:text-3xl font-bold'>অ্যাকাউন্ট তৈরি করুন</h2>
+                    <p className='text-sm sm:text-[15px] text-[#747373] mt-2'>
+                        বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
+                    </p>
                 </div>
 
-                <div className='flex justify-center my-9 items-center text-center'>
-                    <form className="bg-white p-5 rounded-2xl shadow-sm" onSubmit={onSubmit}>
+                <div className='flex justify-center my-6 sm:my-9 items-center text-center'>
+                    <form className="bg-white w-full max-w-md p-4 sm:p-5 md:p-6 rounded-2xl shadow-sm" onSubmit={onSubmit}>
                         <fieldset className="fieldset rounded-box">
 
-                            <label className="label text-black text-[18px]">নাম</label>
-                            <input name='name' type="text" className="input w-full" placeholder="আপনার নাম লিখুন" />
+                            <label className="label text-black text-base sm:text-[18px]">নাম</label>
+                            <input name='name' type="text" className="input w-full text-sm sm:text-base" placeholder="আপনার নাম লিখুন" />
 
-                            <label className="label text-black text-[18px]">ছবি</label>
-                            <input name="image" type="url" className="input w-full" placeholder="প্রোফাইল ছবি সেট করুন" required />
+                            <label className="label text-black text-base sm:text-[18px]">ছবি</label>
+                            <input name="image" type="url" className="input w-full text-sm sm:text-base" placeholder="প্রোফাইল ছবি সেট করুন" required />
 
-                            <label className="label text-black text-[18px]">ইমেইল</label>
-                            <input name='email' type="email" className="input validator w-full" placeholder="আপনার ইমেল লিখুন" required />
+                            <label className="label text-black text-base sm:text-[18px]">ইমেইল</label>
+                            <input name='email' type="email" className="input validator w-full text-sm sm:text-base" placeholder="আপনার ইমেল লিখুন" required />
 
-
-                            <label className="label text-black text-[18px]">পাসওয়ার্ড</label>
+                            <label className="label text-black text-base sm:text-[18px]">পাসওয়ার্ড</label>
                             <input
                                 name="password"
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="কমপক্ষে ৮ অক্ষর"
-                                className="input validator w-full"
+                                className="input validator w-full text-sm sm:text-base"
                                 required
                             />
 
-                            <label className="label text-black text-[18px]">পাসওয়ার্ড নিশ্চিত করুন</label>
+                            <label className="label text-black text-base sm:text-[18px]">পাসওয়ার্ড নিশ্চিত করুন</label>
                             <input
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 placeholder="আবার লিখুন"
-                                className="input validator w-full"
+                                className="input w-full text-sm sm:text-base"
                             />
 
                             {confirmPassword.length > 0 && (
@@ -113,30 +112,34 @@ const SignUpPage = () => {
                                 </p>
                             )}
 
-                            <button type='submit' className="btn bg-green-700 text-white mt-4">অ্যাকাউন্ট তৈরি করুন</button>
+                            <button type='submit' className="btn w-full bg-green-700 text-white mt-4 text-sm sm:text-base">
+                                অ্যাকাউন্ট তৈরি করুন
+                            </button>
 
-                            <div className="flex items-center gap-3 py-1">
+                            <div className="flex items-center gap-3 py-2">
                                 <div className="h-px flex-1 bg-gray-200" />
                                 <span className="text-xs text-gray-500">অথবা</span>
                                 <div className="h-px flex-1 bg-gray-200" />
                             </div>
 
-                            <div className="grid grid-cols-2 gap-2 py-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 py-2">
 
-                                <button onClick={handleGoogleSignIn} className="btn flex">
-                                    <Image src={goLogo} width={20} height={20} alt="google logo" />
-                                    <p>Google দিয়ে চালিয়ে যান</p>
+                                <button type="button" onClick={handleGoogleSignIn} className="btn flex items-center justify-center gap-2 w-full text-xs">
+                                    <Image src={goLogo} width={20} height={20} alt="Google logo" />
+                                    <span>Google দিয়ে চালিয়ে যান</span>
                                 </button>
 
-
-                                <button onClick={handleGitHubSignIn} className="btn flex">
-                                    <Image src={gitLogo} width={20} height={20} alt="google logo" />
-                                    <p>GitHub দিয়ে চালিয়ে যান</p>
+                                <button type="button" onClick={handleGitHubSignIn} className="btn flex items-center justify-center gap-2 w-full text-xs">
+                                    <Image src={gitLogo} width={20} height={20} alt="GitHub logo" />
+                                    <span>GitHub দিয়ে চালিয়ে যান</span>
                                 </button>
 
                             </div>
 
-                            <p className="py-2 text-[15px]">অ্যাকাউন্ট আছে?  <Link href={'/sign-in'} className="text-green-500">সাইন ইন করুন</Link></p>
+                            <p className="py-2 text-sm sm:text-[15px]">
+                                অ্যাকাউন্ট আছে?{" "}
+                                <Link href={'/sign-in'} className="text-green-500">সাইন ইন করুন</Link>
+                            </p>
 
                         </fieldset>
                     </form>
@@ -144,7 +147,11 @@ const SignUpPage = () => {
 
             </div>
 
-            <Link href={'/'}><p className="text-[#7a7979] py-3 hover:text-green-500">← হোম পেজে ফিরে যান</p></Link>
+            <Link href={'/'}>
+                <p className="text-[#7a7979] mb-9 text-sm sm:text-base hover:text-green-500 flex justify-center">
+                    ← হোম পেজে ফিরে যান
+                </p>
+            </Link>
 
         </section>
     );
